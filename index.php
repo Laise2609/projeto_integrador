@@ -3,6 +3,7 @@ require "cabecalho.php"
 ?>
 
 <main>
+    <div class="container">
         <article id="cta">
             <section class="margin">
                 <img class="img-cta" src="imagens-oneup/img-cta.png" alt="">
@@ -36,6 +37,7 @@ require "cabecalho.php"
         
             </section>
         </article>
+        </div>
     </main>
         <hr>
 
