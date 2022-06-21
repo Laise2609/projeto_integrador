@@ -1,3 +1,15 @@
+<?php
+require "inc/funcoes_usuario.php";
+if(isset($_POST["enviar"])){
+  $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
+  $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
+  $tipo = filter_input(INPUT_POST, 'tipo', FILTER_SANITIZE_SPECIAL_CHARS);
+  $senha = senhaCodificada($_POST['senha']);
+
+  cadastraUsuario($conexao, $nome, $email, $senha, $tipo);
+	header("location:index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -30,20 +42,20 @@
               <label for="senha">Senha:</label>
               <input id="senha" name="senha" required="required" type="password" placeholder="Digite sua senha" /> 
             </p>
+            
+            <p>
+              <label for="tipo">Tipo:</label>
+              <select class="custom-select" name="tipo" id="tipo" required>
+                <option value=""></option>
+                <option value="editor">Aluno</option>
+                <option value="admin">Administrador</option>
+              </select>
+            </p>
 
             <p> 
-              <label for="confirma-senha">Confirme sua senha:</label>
-              <input id="confirma-senha" name="confirma-senha" required="required" type="password" placeholder="Digite sua senha" /> 
+              <input type="submit" value="Entrar" name="enviar" /> 
             </p>
-            
-            <p> 
-              <input type="submit" value="Entrar" /> 
-            </p>
-            
-            <p class="link">
-              Já possui uma conta?
-              <a href="login.php">Entre aqui!</a>
-            </p>
+          
           </form>
         </div>
       </div>
