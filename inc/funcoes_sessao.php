@@ -8,8 +8,8 @@ function verificaAcesso(){
     if(!isset($_SESSION['id'])){
         //então significa que ele não está logado, portanto apague qualquer resquício de sessão e force o usuário a ir para o login.php
         session_destroy();
-        header("location:../login.php");
-        die();
+        header("location:login.php");
+        exit;
     }
 }
 
@@ -24,14 +24,7 @@ function login(int $id, string $nome, string $email, string $tipo){
 function logout(){
     session_start();
     session_destroy();
-    header("location:login.php?logout");
+    header("location:login.php");
     die();          
-}
+} 
 
-function verificaAcessoAdmin(){
-    //Se o tipo de usuário logado não for admin
-    if($_SESSION['tipo'] != 'admin'){
-        header("location:nao-autorizado.php");
-        die(); //ou exit
-    } 
-}

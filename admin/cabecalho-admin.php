@@ -1,6 +1,7 @@
 <?php
-require "./inc/funcoes_sessao.php";
+require "../inc/funcoes_sessao.php";
 echo $_SESSION['id'];
+verificaAcesso();
 
 //Detectando quando sair é acionado
 if(isset($_GET['sair'])){

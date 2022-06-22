@@ -1,6 +1,5 @@
 <?php
 require "cabecalho.php";
-require "inc/funcoes_sessao.php";
 require "inc/funcoes_usuario.php";
 
 /* Mensagens para os processos de erros no login */

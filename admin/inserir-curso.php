@@ -1,5 +1,5 @@
 <?php  
-require "cabecalho.php";
+require "cabecalho-admin.php";
 require "inc/funcoes_cursos.php";
 
 if(isset($_POST['inserir'])){

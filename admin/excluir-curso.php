@@ -1,7 +1,6 @@
 <?php
 require "inc/funcoes_cursos.php";
 require "inc/funcoes_sessao.php";
-verificaAcesso();
 
 $idUsuarioLogado = $_SESSION['id'];
 $tipoUsuarioLogado = $_SESSION['tipo'];

@@ -1,5 +1,5 @@
 <?php
-require "conexao.php";
+require "./conexao.php";
 
 /* inserir curso */
 function inserirCurso(mysqli $conexao, string $nome, string $descricao, int $quantidade, string $imagem){
@@ -10,8 +10,8 @@ function inserirCurso(mysqli $conexao, string $nome, string $descricao, int $qua
 
 /* função ler cursos */
 function lerCursos(mysqli $conexao):array {
-    $sql = "SELECT cursos.id, cursos.nome, cursos.descricao, cursos.quantidade FROM cursos INNER JOIN usuarios ON curso_id = cursos.id";
-    $resultado = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+    $sql = "SELECT id, nome, descricao, quantidade, imagem FROM cursos";
+    $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
     $curso = [];
     while($cursos = mysqli_fetch_assoc($resultado)){
         array_push($cursos, $curso);
@@ -81,4 +81,3 @@ function lerDetalhes(mysqli $conexao, int $idCurso):array {
     return mysqli_fetch_assoc($resultado); 
 }
 
- 
