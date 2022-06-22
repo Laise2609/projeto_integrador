@@ -65,7 +65,7 @@ function upload($arquivo){
 }
 
 function lerTodosOsCursos(mysqli $conexao):array {
-    $sql = "SELECT id, nome, descricao, quantidade FROM cursos";
+    $sql = "SELECT id, nome, descricao, quantidade, imagem FROM cursos";
     
     $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
     $cursos = [];
@@ -74,3 +74,11 @@ function lerTodosOsCursos(mysqli $conexao):array {
     }
     return $cursos; 
 } 
+
+function lerDetalhes(mysqli $conexao, int $idCurso):array {    
+    $sql = "SELECT cursos.id, cursos.nome, cursos.descricao, cursos.quantidade, cursos.imagem FROM cursos WHERE cursos.id = $idCurso";
+    $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+    return mysqli_fetch_assoc($resultado); 
+}
+
+ 

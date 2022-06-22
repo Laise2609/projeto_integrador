@@ -1,5 +1,27 @@
-<?php require "cabecalho.php" ?>
+<?php
+ require "cabecalho.php";
+ require "inc/funcoes_cursos.php";
 
+ if(isset($_POST['inserir'])){
+  $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
+  $descricao = filter_input(INPUT_POST, 'descricao', FILTER_SANITIZE_SPECIAL_CHARS);
+  $quantidade = filter_input(INPUT_POST, 'quantidade', FILTER_SANITIZE_NUMBER_INT);
+
+  //UPLOAD DE IMAGEM
+  $imagem = $_FILES['imagem'];
+
+  //Obtendo e enviando dados
+  $imagem = $_FILES['imagem'];
+
+  //Função upload
+  upload($imagem);
+
+  //Função inserir post
+  inserirCurso($conexao, $nome, $descricao, $quantidade, $imagem['name'], $_SESSION['id']);
+
+  header("location:index.php");
+}
+  ?>
 <div class="row">
     <article class="col-12 bg-white rounded shadow my-1 py-4">
       <h2 class="text-center">Inserir curso</h2>
