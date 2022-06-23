@@ -1,4 +1,5 @@
 <?php
+require "inc/funcoes_sessao.php";
 require "cabecalho.php";
 require "inc/funcoes_usuario.php";
 
@@ -19,15 +20,18 @@ if( isset($_GET['acesso_proibido']) ){
 
 if(isset($_POST['entrar'])){
     if(empty($_POST['email']) || empty($_POST['senha'])){
-      header("location:login.php?campos_obrigatorios");
+      header("location:index.php?campos_obrigatorios");
     } else {
       $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
       $senha = $_POST['senha'];
       $usuario = buscarUsuario($conexao, $email);
+      var_dump($usuario);
+    }}
+      
       
 //---------------------------------------------------------------------------------------------------
   
-    if($usuario != null){ 
+    /* if($usuario != null){ 
         if(password_verify($senha, $usuario['senha'])){
           login($usuario['id'], $usuario['nome'], $usuario['email'], $usuario['tipo']);
           header("location:index.php");
@@ -39,28 +43,36 @@ if(isset($_POST['entrar'])){
         header("location:login.php?nao_encontrado");
       }
     }
-  }
+  } */
 ?>
-<div class="row">
-  <article >
-    <h2 >Bem vindo novamente!</h2>
+<main>
+    <div class="content">
+      <div id="login">
+          <form method="POST"> 
+            <h1>Bem vindo!</h1> 
+            <p> 
+              <label for="nome_login">E-mail:</label>
+              <input id="nome_login" name="nome_login" required="required" type="text" placeholder="Digite seu e-mail"/>
+            </p>
 
-    <form action="" method="post" id="form-login" name="form-login" >
-
-      <p><?=$feedback?></p>
-
-      <div >
-        <label for="email">E-mail:</label>
-        <input  type="email" id="email" name="email">
+            <?php echo $feedback ?> 
+            
+            <p> 
+              <label for="email_login">Senha:</label>
+              <input id="email_login" name="email_login" required="required" type="password" placeholder="Digite sua senha" /> 
+            </p>
+            
+            <p> 
+              <input type="submit" value="entrar" /> 
+            </p>
+            
+            <p class="link">
+              Ainda não tem conta?
+              <a href="cadastro.php">Cadastre-se</a>
+            </p>
+          </form>
+        </div>
       </div>
-      <div >
-        <label for="senha">Senha:</label>
-        <input  type="password" id="senha" name="senha">
-      </div>
-
-      <button name="entrar" type="submit">Entrar</button>
-
-    </form>
-  </article>
+    </main>
 
 </div>

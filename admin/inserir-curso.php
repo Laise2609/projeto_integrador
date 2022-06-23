@@ -1,6 +1,6 @@
 <?php  
-require "cabecalho-admin.php";
-require "inc/funcoes_cursos.php";
+require "../inc/cabecalho-admin.php";
+require "../inc/funcoes_cursos.php";
 
 if(isset($_POST['inserir'])){
   $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -19,7 +19,7 @@ if(isset($_POST['inserir'])){
   //Função inserir post
   inserirCurso($conexao, $nome, $descricao, $quantidade, $imagem['name']);
 
-  header("location:cursos.php");
+  header("location:cursos_lista.php");
 }
 ?>
        
@@ -56,5 +56,3 @@ if(isset($_POST['inserir'])){
 
     </article>
   </div>
-
-<?php require "rodape.php"; ?> 

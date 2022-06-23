@@ -14,8 +14,8 @@ $cursos = lerTodosOsCursos($conexao);
         <img class="card-img-top" src="imagem/<?=$curso['imagem']?>" alt="Imagem de destaque do curso">
         <div class="card-body">
           <h5 class="card-title"><?=$curso['nome']?></h5>
-          <p class="card-text"><?=$curso['descricao']?></p>
-          <p><?=$curso['quantidade']?></p>
+          <p class="card-text">Ver mais...</p>
+          <p><?=$curso['quantidade']?> vagas disponíveis</p>
         </div>
       </a>
     </article>

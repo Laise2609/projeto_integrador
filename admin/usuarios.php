@@ -1,16 +1,16 @@
 <?php
 require "../inc/cabecalho-admin.php";
-require "../inc/funcoes_cursos.php";
+require "../inc/funcoes_usuario.php";
 $idUsuarioLogado = $_SESSION['id'];
 $tipoUsuarioLogado = $_SESSION['tipo'];
 
-$cursos = lerCursos($conexao);
+$users = lerUsuarios($conexao);
 ?>
-<div class="row">
+<div class="row px-5">
   <article class="col-12 bg-white rounded shadow my-1 py-4">
-    <h2 class="text-center">Cursos</h2>
+    <h2 class="text-center">Usuários</h2>
     <p class="lead text-right">
-      <a class="btn btn-primary" href="inserir-curso.php">Inserir novo Curso</a>
+      <a class="btn btn-primary" href="inserir-user.php">Inserir novo Usuário</a>
     </p>
             
     <div class="table-responsive"> 
@@ -25,21 +25,21 @@ $cursos = lerCursos($conexao);
         </thead>
       
         <tbody>
-<?php foreach($cursos as $curso){ 
+<?php foreach($users as $user){ 
 ?>          
             <tr>
-            <td> <?=$curso['nome']?> </td>
+            <td> <?=$user['nome']?> </td>
 
-            <td><?=$curso['quantidade']?> </td>
+            <td><?=$user["email"]?> </td>
 
               <td class="text-center">
               <a class="btn btn-warning btn-sm" 
-              href="atualizar-curso.php?id=<?=$curso['id']?>">
+              href="atualiza_usuario.php?id=<?=$user['id']?>">
                   Atualizar
               </a>
               -
               <a  class="btn btn-danger btn-sm excluir" 
-              href="excluir-curso.php?id=<?=$curso['id']?>">
+              href="excluir-usuario.php?id=<?=$user['id']?>">
                   Excluir
               </a>
             </td>

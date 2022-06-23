@@ -8,7 +8,7 @@ function verificaAcesso(){
     if(!isset($_SESSION['id'])){
         //então significa que ele não está logado, portanto apague qualquer resquício de sessão e force o usuário a ir para o login.php
         session_destroy();
-        header("location:login.php");
+        header("location: ../login.php");
         exit;
     }
 }
@@ -24,7 +24,7 @@ function login(int $id, string $nome, string $email, string $tipo){
 function logout(){
     session_start();
     session_destroy();
-    header("location:login.php");
+    header("location:../login.php");
     die();          
 } 
 

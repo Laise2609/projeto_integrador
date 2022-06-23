@@ -1,5 +1,5 @@
 <?php
-require "./conexao.php";
+require "conexao.php";
 
 /* inserir curso */
 function inserirCurso(mysqli $conexao, string $nome, string $descricao, int $quantidade, string $imagem){
@@ -12,11 +12,11 @@ function inserirCurso(mysqli $conexao, string $nome, string $descricao, int $qua
 function lerCursos(mysqli $conexao):array {
     $sql = "SELECT id, nome, descricao, quantidade, imagem FROM cursos";
     $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
-    $curso = [];
-    while($cursos = mysqli_fetch_assoc($resultado)){
+    $cursos = [];
+    while($curso = mysqli_fetch_assoc($resultado)){
         array_push($cursos, $curso);
     }
-    return $curso;
+    return $cursos;
 }
 
 // atualizar curso parte 1
@@ -33,8 +33,8 @@ function atualizarPost(mysqli $conexao, int $idCurso, string $nome, string $desc
 }
 
 //excluir post
-function excluirPost(mysqli $conexao, int $idCurso){   
-    $sql = "DELETE FROM posts WHERE id = $idCurso";
+function excluirCurso(mysqli $conexao, int $idCurso){   
+    $sql = "DELETE FROM cursos WHERE id = $idCurso";
     mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 }
 
